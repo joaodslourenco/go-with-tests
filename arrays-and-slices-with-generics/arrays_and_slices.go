@@ -1,5 +1,8 @@
 package arraysandslices
 
+type Person struct {
+	Name string
+}
 type Transaction struct {
 	From string
 	To   string
@@ -59,4 +62,14 @@ func SumAllTails(numbers ...[]int) []int {
 	}
 
 	return Reduce(numbers, sumTail, []int{})
+}
+
+func Find[A any](items []A, predicate func(A) bool) (value A, found bool) {
+	for _, v := range items {
+		if predicate(v) {
+			return v, true
+		}
+	}
+
+	return
 }
